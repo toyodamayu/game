@@ -72,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && gpUpdateKey() == 0)
 	{
-		//LoadGraphScreen(0, 0, "meiro2.png", TRUE);
+		LoadGraphScreen(0, 0, "meiro2.png", TRUE);
 
 		float a = 0.01;
 		int s, t;
