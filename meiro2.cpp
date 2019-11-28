@@ -37,7 +37,7 @@ int gpUpdateKey()
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-
+	printf("‚­‚Ì‚¾‚æ");
 	ChangeWindowMode(TRUE);
 	SetGraphMode(400, 400, 16);
 	DxLib_Init();
@@ -51,7 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	LoadGraphScreen(0, 0, "shiro.png", TRUE);
 	ScreenFlip();
 
-	int n = 0;
+	/*int n = 0;
 	for (int i = 0; i < 10; i++)
 	{
 		int m = 0;
@@ -65,12 +65,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			m += 40;
 		}
 		n += 40;
-	}
+	}*/
 
 	int x = 380, y = 380;
 	int Handle = LoadGraph("kao.png");
 
-	/*while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && gpUpdateKey() == 0)
+	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && gpUpdateKey() == 0)
 	{
 		//LoadGraphScreen(0, 0, "meiro2.png", TRUE);
 
@@ -130,7 +130,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			break;
 		}
 
-	}*/
+	}
 
 	WaitKey();
 	DxLib_End();
