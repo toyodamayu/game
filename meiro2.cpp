@@ -69,13 +69,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	int x = 380, y = 380;
 	int Handle = LoadGraph("kao.png");
+	int p, q;
+	float a = 0.01;
+	int s, t;
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && gpUpdateKey() == 0)
 	{
 		LoadGraphScreen(0, 0, "meiro2.png", TRUE);
 
-		float a = 0.01;
-		int s, t;
+		//float a = 0.01;
+		//int s, t;
 		s = x;
 		t = y;
 
@@ -100,9 +103,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			y = y - a * y;
 		}
 
-		int p, q;
-		p = x / 40;
-		q = y / 40;
+		p =int( x / 40);
+		q =int(y / 40);
 
 		if ((map[p][q] == 1) || (x > 400) || (y > 400) || (x < 0) || (y < 0))
 		{
