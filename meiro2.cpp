@@ -5,18 +5,17 @@
 
 int map[10][10] =
 { {0,0,0,0,0,0,0,0,0,0},
- {0,1,1,1,1,1,1,1,1,0},
- {0,1,0,0,0,0,0,0,1,0},
- {0,1,0,1,1,1,1,0,1,0},
- {0,1,0,1,2,2,1,0,1,0},
- {0,1,0,1,2,2,1,0,1,0},
- {0,1,0,1,1,0,1,0,1,0},
- {0,1,0,0,0,0,1,0,1,0},
- {0,1,1,1,1,1,1,0,1,0},
- {0,0,0,0,0,0,0,0,1,0} };
+  {0,1,1,1,1,1,1,1,1,0},
+  {0,1,0,0,0,0,0,0,1,0},
+  {0,1,0,1,1,1,1,0,1,0},
+  {0,1,0,1,2,2,1,0,1,0},
+  {0,1,0,1,2,2,1,0,1,0},
+  {0,1,0,1,1,0,1,0,1,0},
+  {0,1,0,0,0,0,1,0,1,0},
+  {0,1,1,1,1,1,1,0,1,0},
+  {0,0,0,0,0,0,0,0,1,0} };
 
 int Key[256];
-
 int gpUpdateKey()
 {
 	char tmpKey[256];
@@ -48,7 +47,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return -1;
 	}
 
-	LoadGraphScreen(0, 0, "shiro.png", TRUE);
+	LoadGraphScreen(0, 0, "pink.jpg", TRUE); 
 	ScreenFlip();
 
 	/*int n = 0;
@@ -59,26 +58,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			if (map[i][j] == 1)
 			{
-				LoadGraphScreen(m, n, "kuro.jpg", TRUE);
-				ScreenFlip();
+				LoadGraphScreen(m, n, "blue.jpg", TRUE);
 			}
 			m += 40;
 		}
 		n += 40;
-	}*/
+	}
+	ScreenFlip();*/
 
 	int x = 380, y = 380;
 	int Handle = LoadGraph("kao.png");
-	int p, q;
-	float a = 0.01;
-	int s, t;
+	int p, q; 
+	float a = 0.01; 
+	int s, t; 
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && gpUpdateKey() == 0)
 	{
-		LoadGraphScreen(0, 0, "meiro2.png", TRUE);
+		LoadGraphScreen(0, 0, "back.png", TRUE);
 
-		//float a = 0.01;
-		//int s, t;
 		s = x;
 		t = y;
 
@@ -104,9 +101,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 
 		p =int( x / 40);
-		q =int(y / 40);
+		q =int( y / 40);
 
-		if ((map[p][q] == 1) || (x > 400) || (y > 400) || (x < 0) || (y < 0))
+		if ((map[q][p] == 1) || (x > 400) || (y > 400) || (x < 0) || (y < 0))
 		{
 			DrawRotaGraph(s, t, 1.0, 0.0, Handle, TRUE);
 			x = s;
@@ -121,15 +118,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		else
 		{
 			DrawRotaGraph(x, y, 1.0, 0.0, Handle, TRUE);
-		}
-
-		//DrawRotaGraph(x, y, 1.0, 0.0, Handle, TRUE);
-
-		if (((x >= 160) && (x <= 240)) && ((y >= 160) && (y <= 240)))
-		{
-			LoadGraphScreen(0, 0, "g.png", TRUE);
-			ScreenFlip();
-			break;
 		}
 
 	}
