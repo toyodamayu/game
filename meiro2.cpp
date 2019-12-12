@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+int func(int* x, int* y);
 
 int map[10][10] =
 { {0,0,0,0,0,0,0,0,0,0},
@@ -32,6 +33,35 @@ int gpUpdateKey()
 		}
 	}
 	return 0;
+}
+
+float a = 0.01;
+int func(int* x,int* y)
+{
+	if (Key[KEY_INPUT_RIGHT] >= 1)
+	{
+		a* (*x)++;
+		*x = *x + a *(*x);
+		return *x;
+	}
+	if (Key[KEY_INPUT_DOWN] >= 1)
+	{
+		a* (*y)++;
+		*y = *y + a * (*y);
+		return *y;
+	}
+	if (Key[KEY_INPUT_LEFT] >= 1)
+	{
+		a* (*x)--;
+		*x = *x - a * (*x);
+		return *x;
+	}
+	if (Key[KEY_INPUT_UP] >= 1)
+	{
+		a* (*y)--;
+		*y = *y - a * (*y);
+		return *y;
+	}
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -68,6 +98,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	int x = 380, y = 380;
 	int Handle = LoadGraph("kao.png");
+	int flag = LoadGraph("flag.png");
 	int p, q; 
 	float a = 0.01; 
 	int s, t; 
@@ -75,11 +106,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && gpUpdateKey() == 0)
 	{
 		LoadGraphScreen(0, 0, "back.png", TRUE);
+		DrawRotaGraph(200, 200, 0.6, 0.0, flag, TRUE);
+		                         
+		SetFontThickness(50);                         
+		ChangeFont("HGS‘n‰pŠpÎß¯Ìß‘Ì");              
+		DrawString(193, 185, "‚²", GetColor(255, 255, 255));
 
 		s = x;
 		t = y;
 
-		if (Key[KEY_INPUT_RIGHT] >= 1)
+		func(&x, &y);
+		/*if (Key[KEY_INPUT_RIGHT] >= 1)
 		{
 			a* x++;
 			x = x + a * x;
@@ -98,7 +135,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			a* y--;
 			y = y - a * y;
-		}
+		}*/
 
 		p =int( x / 40);
 		q =int( y / 40);
