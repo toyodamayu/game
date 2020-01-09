@@ -77,6 +77,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return -1;
 	}
 
+	int sound;
+	sound = LoadSoundMem("fanfare.wav");
+
 	LoadGraphScreen(0, 0, "pink.jpg", TRUE); 
 	ScreenFlip();
 
@@ -148,6 +151,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		else if (map[p][q] == 2)
 		{
+			PlaySoundMem(sound, DX_PLAYTYPE_BACK);
 			LoadGraphScreen(0, 0, "g.png", TRUE);
 			ScreenFlip();
 			break;
